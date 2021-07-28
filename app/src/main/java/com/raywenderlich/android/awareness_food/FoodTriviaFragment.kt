@@ -71,6 +71,9 @@ class FoodTriviaFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     binding?.apply {
       getFoodTriviaButton.setOnClickListener {
+        viewModel.foodTriviaState.observe(viewLifecycleOwner, {
+          handleFoodTriviaApiState(it)
+        })
         viewModel.getRandomFoodTrivia()
       }
     }
